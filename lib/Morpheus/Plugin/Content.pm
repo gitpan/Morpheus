@@ -1,6 +1,6 @@
 package Morpheus::Plugin::Content;
 BEGIN {
-  $Morpheus::Plugin::Content::VERSION = '0.32';
+  $Morpheus::Plugin::Content::VERSION = '0.34';
 }
 
 # ABSTRACT: base class for plugins that evaluate user defined perl configs
@@ -128,7 +128,7 @@ Morpheus::Plugin::Content - base class for plugins that evaluate user defined pe
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 

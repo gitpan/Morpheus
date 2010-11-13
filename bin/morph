@@ -3,7 +3,7 @@
 
 package morph;
 BEGIN {
-  $morph::VERSION = '0.32';
+  $morph::VERSION = '0.34';
 }
 
 # ABSTRACT: Morpheus configuration tree dumper.
@@ -70,7 +70,7 @@ morph - Morpheus configuration tree dumper.
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 SYNOPSIS
 

@@ -37,13 +37,11 @@ my %WriteMakefileArgs = (
     'Params::Validate' => '0',
     'Pod::Usage' => '0',
     'Symbol' => '0',
-    'Sys::Hostname::Long' => '0',
     'Template' => '0',
     'XML::Simple' => '0',
-    'overload' => '0',
-    'parent' => '0'
+    'overload' => '0'
   },
-  'VERSION' => '0.32',
+  'VERSION' => '0.34',
   'test' => {
     'TESTS' => 't/*.t'
   }

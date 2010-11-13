@@ -1,6 +1,6 @@
 package Morpheus::Bootstrap::Vital;
 BEGIN {
-  $Morpheus::Bootstrap::Vital::VERSION = '0.32';
+  $Morpheus::Bootstrap::Vital::VERSION = '0.34';
 }
 use strict;
 use warnings;
@@ -42,7 +42,7 @@ Morpheus::Bootstrap::Vital - bootstrap enabling Overrides and Defaults functiona
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 

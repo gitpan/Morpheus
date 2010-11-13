@@ -20,7 +20,6 @@ lib/Morpheus/Defaults.pm
 lib/Morpheus/Key.pm
 lib/Morpheus/Overrides.pm
 lib/Morpheus/Plugin/Content.pm
-lib/Morpheus/Plugin/Core.pm
 lib/Morpheus/Plugin/DB.pm
 lib/Morpheus/Plugin/Env.pm
 lib/Morpheus/Plugin/File.pm

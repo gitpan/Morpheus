@@ -1,6 +1,6 @@
 package Morpheus::Bootstrap;
 BEGIN {
-  $Morpheus::Bootstrap::VERSION = '0.32';
+  $Morpheus::Bootstrap::VERSION = '0.34';
 }
 use strict;
 use warnings;
@@ -78,7 +78,7 @@ Morpheus::Bootstrap - initial morpheus plugin which loads all other plugins
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 

@@ -1,6 +1,6 @@
 package Morpheus::Utils;
 BEGIN {
-  $Morpheus::Utils::VERSION = '0.32';
+  $Morpheus::Utils::VERSION = '0.34';
 }
 use strict;
 
@@ -10,7 +10,7 @@ sub normalize ($);
 sub adjust ($$);
 sub merge ($$;$);
 
-use parent qw(Exporter);
+use base qw(Exporter);
 our @EXPORT = qw(normalize merge adjust);
 
 use Symbol qw(gensym);
@@ -111,7 +111,7 @@ Morpheus::Utils - some common functions which don't fit anywhere else
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 

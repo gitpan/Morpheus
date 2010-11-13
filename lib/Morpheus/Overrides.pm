@@ -1,6 +1,6 @@
 package Morpheus::Overrides;
 BEGIN {
-  $Morpheus::Overrides::VERSION = '0.32';
+  $Morpheus::Overrides::VERSION = '0.34';
 }
 use strict;
 
@@ -49,7 +49,7 @@ Morpheus::Overrides - plugin for overriding configuration from perl code
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 

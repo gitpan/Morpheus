@@ -1,6 +1,6 @@
 package Morpheus::Bootstrap::Extra;
 BEGIN {
-  $Morpheus::Bootstrap::Extra::VERSION = '0.32';
+  $Morpheus::Bootstrap::Extra::VERSION = '0.34';
 }
 use strict;
 use warnings;
@@ -9,7 +9,6 @@ use warnings;
 
 use Morpheus::Plugin::Env;
 use Morpheus::Plugin::File;
-use Morpheus::Plugin::Core;
 
 use Morpheus::Plugin::Simple;
 
@@ -21,11 +20,6 @@ sub new {
     return Morpheus::Plugin::Simple->new({
         "morpheus" => {
             "plugins" => {
-
-                Core => {
-                    priority => 20,
-                    object => Morpheus::Plugin::Core->new(),
-                },
 
                 File => {
                     priority => 30,
@@ -53,7 +47,7 @@ Morpheus::Bootstrap::Extra - extra plugins - Env and File
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 

@@ -1,6 +1,6 @@
 package Morpheus::Plugin::DB;
 BEGIN {
-  $Morpheus::Plugin::DB::VERSION = '0.32';
+  $Morpheus::Plugin::DB::VERSION = '0.34';
 }
 use strict;
 
@@ -78,7 +78,7 @@ Morpheus::Plugin::DB - plugin reading configs from SQL DB
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 

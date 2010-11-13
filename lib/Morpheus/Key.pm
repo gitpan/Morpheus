@@ -1,6 +1,6 @@
 package Morpheus::Key;
 BEGIN {
-  $Morpheus::Key::VERSION = '0.32';
+  $Morpheus::Key::VERSION = '0.34';
 }
 use strict;
 
@@ -16,7 +16,7 @@ use overload
     '""' => sub { ${$_[0]} },
     '@{}' => \&parts;
 
-use parent qw(Exporter);
+use base qw(Exporter);
 our @EXPORT_OK = qw(key);
 
 sub new {
@@ -64,7 +64,7 @@ Morpheus::Key - class representing config key
 
 =head1 VERSION
 
-version 0.32
+version 0.34
 
 =head1 AUTHOR
 
