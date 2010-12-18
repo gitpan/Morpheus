@@ -1,6 +1,6 @@
 package Morpheus::Utils;
 BEGIN {
-  $Morpheus::Utils::VERSION = '0.34';
+  $Morpheus::Utils::VERSION = '0.36';
 }
 use strict;
 
@@ -23,8 +23,7 @@ sub normalize ($) {
     my $result = { %$data };
     for my $key ( keys %$data) {
         my @keys = @{key($key)};
-        next if @keys == 1;
-
+        next if @keys == 1 and $keys[0] eq $key; # "/a//" -> "a"
         my $value = delete $result->{$key};
         my $p = my $patch = {};
         $p = $p->{$_} = {} for splice @keys, 0, -1;
@@ -111,7 +110,7 @@ Morpheus::Utils - some common functions which don't fit anywhere else
 
 =head1 VERSION
 
-version 0.34
+version 0.36
 
 =head1 AUTHOR
 

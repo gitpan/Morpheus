@@ -10,7 +10,6 @@ debian/changelog
 debian/compat
 debian/control
 debian/rules
-debian/stamp-makefile-build
 dist.ini
 lib/Morpheus.pm
 lib/Morpheus/Bootstrap.pm
@@ -57,5 +56,5 @@ t/import.t
 t/key.t
 t/lib/Morpheus/Bootstrap/_Extra.pm
 t/merge.t
-t/release-pod-coverage.t
+t/normalize.t
 t/release-pod-syntax.t
