@@ -1,6 +1,6 @@
 package Morpheus::Utils;
 BEGIN {
-  $Morpheus::Utils::VERSION = '0.36';
+  $Morpheus::Utils::VERSION = '0.37';
 }
 use strict;
 
@@ -110,7 +110,7 @@ Morpheus::Utils - some common functions which don't fit anywhere else
 
 =head1 VERSION
 
-version 0.36
+version 0.37
 
 =head1 AUTHOR
 
