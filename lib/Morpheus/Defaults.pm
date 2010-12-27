@@ -1,6 +1,6 @@
 package Morpheus::Defaults;
 BEGIN {
-  $Morpheus::Defaults::VERSION = '0.37';
+  $Morpheus::Defaults::VERSION = '0.37_01';
 }
 use strict;
 
@@ -24,7 +24,7 @@ Morpheus::Defaults - plugin for defining configuration from perl code
 
 =head1 VERSION
 
-version 0.37
+version 0.37_01
 
 =head1 AUTHOR
 
