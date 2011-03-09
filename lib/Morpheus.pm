@@ -1,6 +1,6 @@
 package Morpheus;
 BEGIN {
-  $Morpheus::VERSION = '0.37_01';
+  $Morpheus::VERSION = '0.38';
 }
 use strict;
 sub morph ($;$);
@@ -84,7 +84,7 @@ sub export ($$;$) {
         } else {
             $var = shift @$bindings;
             if (ref $var) {
-                export($package, $var, "$root$ns.");
+                export($package, $var, "$root$ns/");
                 next;
             } else {
                 $var =~ s/^(\?)// and $optional = $1;
@@ -286,7 +286,7 @@ Morpheus - the ultimate configuration engine
 
 =head1 VERSION
 
-version 0.37_01
+version 0.38
 
 =head1 SYNOPSIS
 
@@ -426,7 +426,7 @@ Andrei Mishchenko <druxa@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Yandex LLC.
+This software is copyright (c) 2011 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

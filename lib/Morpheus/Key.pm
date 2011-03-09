@@ -1,6 +1,6 @@
 package Morpheus::Key;
 BEGIN {
-  $Morpheus::Key::VERSION = '0.37_01';
+  $Morpheus::Key::VERSION = '0.38';
 }
 use strict;
 
@@ -65,7 +65,7 @@ Morpheus::Key - class representing config key
 
 =head1 VERSION
 
-version 0.37_01
+version 0.38
 
 =head1 SYNOPSIS
 
@@ -128,7 +128,7 @@ Andrei Mishchenko <druxa@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Yandex LLC.
+This software is copyright (c) 2011 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

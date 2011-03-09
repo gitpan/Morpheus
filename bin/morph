@@ -3,7 +3,7 @@
 
 package morph;
 BEGIN {
-  $morph::VERSION = '0.37_01';
+  $morph::VERSION = '0.38';
 }
 
 # ABSTRACT: Morpheus configuration tree dumper.
@@ -70,7 +70,7 @@ morph - Morpheus configuration tree dumper.
 
 =head1 VERSION
 
-version 0.37_01
+version 0.38
 
 =head1 SYNOPSIS
 
@@ -86,7 +86,7 @@ Andrei Mishchenko <druxa@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Yandex LLC.
+This software is copyright (c) 2011 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

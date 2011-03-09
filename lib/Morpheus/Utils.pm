@@ -1,6 +1,6 @@
 package Morpheus::Utils;
 BEGIN {
-  $Morpheus::Utils::VERSION = '0.37_01';
+  $Morpheus::Utils::VERSION = '0.38';
 }
 use strict;
 
@@ -110,7 +110,7 @@ Morpheus::Utils - some common functions which don't fit anywhere else
 
 =head1 VERSION
 
-version 0.37_01
+version 0.38
 
 =head1 AUTHOR
 
@@ -118,7 +118,7 @@ Andrei Mishchenko <druxa@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Yandex LLC.
+This software is copyright (c) 2011 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -52,6 +52,7 @@ t/etc2/test/file/priority/check.10.cfg
 t/etc2/test/file/priority/check.cfg
 t/etc2/test/file/stash/override.cfg
 t/file.t
+t/import-glob.t
 t/import.t
 t/key.t
 t/lib/Morpheus/Bootstrap/_Extra.pm
