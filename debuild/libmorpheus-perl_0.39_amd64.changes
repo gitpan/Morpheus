@@ -1,0 +1,31 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.7
+Date: Tue, 15 Mar 2011 18:09:06 +0300
+Source: libmorpheus-perl
+Binary: libmorpheus-perl
+Architecture: source all
+Version: 0.39
+Distribution: stable
+Urgency: low
+Maintainer: Andrei Mishchenko <druxa@yandex-team.ru>
+Changed-By: Vyacheslav Matjukhin (No comments) <mmcleric@yandex-team.ru>
+Description: 
+ libmorpheus-perl - an extremely flexible configuration engine
+Changes: 
+ libmorpheus-perl (0.39) stable; urgency=low
+ .
+   * allow 'morph' script to dump nonrefs in json mode
+Files: 
+ a267d12318f7a41ea9b26d40171b52c2 670 yandex optional libmorpheus-perl_0.39.dsc
+ d880ff66d7966cb94c76154e31dbd617 31484 yandex optional libmorpheus-perl_0.39.tar.gz
+ 4229f048eb1eec072c4fe21760976d0b 54808 yandex optional libmorpheus-perl_0.39_all.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFNf4TTFnEu5LVp4C0RAnTcAKCiZ4LaT7osnwjLDNi9/GdIqUDhtACgl5ng
+25xZq57JUupiKHwnK9x8aWQ=
+=MMy1
+-----END PGP SIGNATURE-----
