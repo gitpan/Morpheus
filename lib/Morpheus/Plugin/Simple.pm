@@ -1,6 +1,6 @@
 package Morpheus::Plugin::Simple;
 BEGIN {
-  $Morpheus::Plugin::Simple::VERSION = '0.39';
+  $Morpheus::Plugin::Simple::VERSION = '0.40';
 }
 use strict;
 use warnings;
@@ -44,7 +44,7 @@ Morpheus::Plugin::Simple - plugin for simple static configuration
 
 =head1 VERSION
 
-version 0.39
+version 0.40
 
 =head1 AUTHOR
 

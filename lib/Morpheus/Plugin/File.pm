@@ -1,6 +1,6 @@
 package Morpheus::Plugin::File;
 BEGIN {
-  $Morpheus::Plugin::File::VERSION = '0.39';
+  $Morpheus::Plugin::File::VERSION = '0.40';
 }
 use strict;
 
@@ -113,7 +113,7 @@ Morpheus::Plugin::File - plugin reading perl-based configs
 
 =head1 VERSION
 
-version 0.39
+version 0.40
 
 =head1 AUTHOR
 
