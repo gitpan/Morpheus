@@ -1,6 +1,6 @@
 package Morpheus::Key;
 BEGIN {
-  $Morpheus::Key::VERSION = '0.40';
+  $Morpheus::Key::VERSION = '0.41';
 }
 use strict;
 
@@ -65,7 +65,7 @@ Morpheus::Key - class representing config key
 
 =head1 VERSION
 
-version 0.40
+version 0.41
 
 =head1 SYNOPSIS
 

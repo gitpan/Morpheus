@@ -1,6 +1,6 @@
 package Morpheus::Plugin::Content;
 BEGIN {
-  $Morpheus::Plugin::Content::VERSION = '0.40';
+  $Morpheus::Plugin::Content::VERSION = '0.41';
 }
 
 # ABSTRACT: base class for plugins that evaluate user defined perl configs
@@ -17,6 +17,7 @@ sub _package ($$) {
     my $md5_self = md5_hex("$self");
     my $md5 = md5_hex($token);
     $token =~ s/[^\w]/_/g;
+    $token = substr($token, 0, 64); # max identifier length is limited in perl
     return "Morpheus::Sandbox::${md5_self}::${token}_${md5}";
 }
 
@@ -127,7 +128,7 @@ Morpheus::Plugin::Content - base class for plugins that evaluate user defined pe
 
 =head1 VERSION
 
-version 0.40
+version 0.41
 
 =head1 CONFIGURATION BLOCKS
 

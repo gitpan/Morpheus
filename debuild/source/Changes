@@ -1,0 +1,12 @@
+Revision history for Morpheus
+
+0.35    Thu Dec 16, 2010
+        * normalize "/a//" to "a" (affects Morpheus::Defaults/Overrides etc.)
+
+0.34    Sat Nov 13, 2010
+        * call dh_perldeps when possible
+        * get rid of Sys::Hostname::Long and parent dependencies
+
+0.32    Tue Nov 02, 2010
+        * converted to Dist::Zilla
+        * a little bit of PODs

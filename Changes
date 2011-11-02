@@ -1,5 +1,8 @@
 Revision history for Morpheus
 
+0.41    Wed Nov 02, 2011
+        * limit max identifier length is sandbox package
+
 0.40    Sat May 21, 2011
         * script.t test checks output of 'morph' script less strictly,
         now compatible with modern Data::Dumper and JSON versions
