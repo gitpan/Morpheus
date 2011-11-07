@@ -129,18 +129,127 @@
 .\" ========================================================================
 .\"
 .IX Title "Morpheus::Bootstrap 3"
-.TH Morpheus::Bootstrap 3 "2010-12-16" "perl v5.8.8" "User Contributed Perl Documentation"
+.TH Morpheus::Bootstrap 3 "2011-11-03" "perl v5.8.8" "User Contributed Perl Documentation"
 .SH "NAME"
 Morpheus::Bootstrap \- initial morpheus plugin which loads all other plugins
 .SH "VERSION"
 .IX Header "VERSION"
-version 0.35
+version 0.42
+.SH "Meta Configuration and Bootstrapping"
+.IX Header "Meta Configuration and Bootstrapping"
+Morpheus uses a set of plugins to retrieve the values of configuration variables from different sources like configuration files, database, environment and so on. The configuration of those plugins, their priorities and the list of them itself is called \*(L"meta configuration\*(R". It is applied within a \*(L"bootstrapping\*(R" procedure that starts at the very first call to Morpheus and after the bootstrapping is over the list of plugins may not be altered. Though you are able to reconfigure plugins objects after that it is not adviced either.
+.PP
+Meta plugins that provide meta configuration are called \*(L"bootstrappers\*(R", technically they are just like ordinary plugins but the configuration data they provide is inside a \*(L"/morpheus/plugins\*(R" namespace. It is expected that \*(L"/morpheus/plugins/*/object\*(R" configuration key would refer to plugin object, and \*(L"/morpheus/plugins/*/priority\*(R" would be its priority. Here \*(L"*\*(R" stands for the \*(L"name\*(R" of the plugin, that is used in debug or error messages, also this name is important when one bootstrapper is overriding the meta configuration provided by another one.
+.Sh "Adding your own plugins, reconfiguring or disabling default plugins"
+.IX Subsection "Adding your own plugins, reconfiguring or disabling default plugins"
+In order to add your own plugin into a set of plugins you may simply add some code into one of the existing bootstrappers. That code should properly initialize your plugin and bind it to \*(L"/morpheus/plugins/*\*(R" under the name and priority you choose. In the same way you may alter the configuration of existing plugins or completely disable them, just edit the code of the bootstrapper that defines those plugins. There are some bootstrappers provided by the default Morpheus installation. It is not recommended to modify the Morpheus::Bootstrap::Vital bootstrapper, but Morpheus::Bootstrap::Extra fits fine. See its code to get a clue of how to program a bootstrapper.
+.PP
+There exists a less simple but ideologically maybe a better way to update meta configuration, see \*(L"Advanced techniques\*(R" section for details.
+.Sh "Advanced Techniques"
+.IX Subsection "Advanced Techniques"
+Here goes a detailed description of bootstrapping process required for understanding the tricks described below. Bootstrapping begins with a single bootstrapper named Morpheus::Bootstrap, that is a level 0 bootstrapper. It looks through perl \f(CW@INC\fR path and loads all the \f(CW\*(C`Morpheus::Bootstrap::*\*(C'\fR packages it finds, then it adds them to the set of plugins (\*(L"/morpheus/plugins/*\*(R") under the names of the corresponding packages Bootstrap::*, these are level 1 bootstrappers. There are two of them in default Morpheus installation, Morpheus::Bootstrap::Vital bootstrapper that enables Morpheus::Defaults and Morpheus::Overrides plugins, and Morpheus::Bootstrap::Extra bootstrapper that adds Morpheus::Plugin::File (with some default configuration) and Morpheus::Plugin::Env plugins. Normally level 1 bootstrappers introduce only non meta plugins, so the bootstrapping finishes at that point. But in general case level 1 bootstrappers may add some level 2 bootstrappers to the list of the plugins and so on. Also some bootstrappers may override configuration made by other bootstrappers, for example change some plugin priority, but much more devastating overrides are possible, including disabling of one bootstrapper by another one. So Morpheus iterates over and over until plugins set stabilizes or an iteration limit is reached leading to an exception.
+.PP
+Being based on the Morpheus itself meta configuration is flexible enough to allow one bootstrapper override the meta configuration provided by another bootstrapper. So you never actually have to edit any bootstrapper, you can always add a new one and achieve the same result. To add a new plugin to the list of plugin you may write your own bootstrapper instead of modifying Morpheus::Bootstrap::Extra, doing so you prevent the risk to lose your modification made to Morpheus::Bootstrap::Extra when updating Morpheus. And also it allows you to enable your plugin conditionally by using \f(CW\*(C`\-I\*(C'\fR perlrun option or \f(CW\*(C`PERL5LIB\*(C'\fR environment variable if you put your bootstrapper into a separate directory not included into \f(CW@INC\fR by default.
+.PP
+Modifying other bootstrapper definitions is slightly more complicated. First of all you need to boost your bootsrapper priority to take advantage over a bootsrapper you would want to override. Non meta plugin normally have priorities below 100, priority 0 plugins are considered disabled. The level 0 bootstrapper Morpheus::Bootstrap has the priority of 200, and the level 1 bootsrappers it defines get the priority of 300. So anything over 300 will be enough to overcome them. After your bootstrapper priority is increased, the definitions it provides override ones of lower priority bootstrappers.
+.PP
+Consider an example:
+.PP
+.Vb 5
+\&    # A bootstrapper B1 enables plugins P1 and P2.
+\&    package Morpheus::Bootstrap::B1;
+\&    use Morpheus::Plugin::P1;
+\&    use Morpheus::Plugin::P2;
+\&    use Morpheus::Plugin::Simple;
+.Ve
+.PP
+.Vb 11
+\&    sub new {
+\&        return Morpheus::Plugin::Simple\->new({
+\&            "morpheus/plugins" => {
+\&                "P1" => {
+\&                    object => Morpheus::Plugin::P1\->new(),
+\&                    priority => 42,
+\&                },
+\&                "P2" => {
+\&                    object => Morpheus::Plugin::P2\->new(foo => "bar"),
+\&                    priority => 69,
+\&                },
+.Ve
+.PP
+.Vb 3
+\&            }
+\&        });
+\&    }
+.Ve
+.PP
+.Vb 1
+\&    1;
+.Ve
+.PP
+.Vb 4
+\&    # A bootstrapper B2 overrides B1. It lowers P1\(aqs priority and changes its construtor parameters. Also it completely disables P2.
+\&    package Morpheus::Bootstrap::B2;
+\&    use Morpheus::Plugin::P1;
+\&    use Morpheus::Plugin::Simple;
+.Ve
+.PP
+.Vb 13
+\&    sub new {
+\&        return Morpheus::Plugin::Simple\->new({
+\&            "morpheus/plugins" => {
+\&                "Bootstrap::B2" => {
+\&                    priority => 400, # boost myself
+\&                },
+\&                "P1" => {
+\&                    object => Morpheus::Plugin::P1\->new(bar => "baz"),
+\&                    priority => 25,
+\&                },
+\&                "P2" => {
+\&                    priority => 0,
+\&                },
+.Ve
+.PP
+.Vb 3
+\&            }
+\&        });
+\&    }
+.Ve
+.PP
+.Vb 1
+\&    1;
+.Ve
+.PP
+.Vb 3
+\&    # A bootstrapper B3 overrides bootstrapper B2 and completely disables it. So if all three B1, B2 and B3 are in @INC then B1\(aqs definitions will be used as B2\(aqs overrides are disabled.
+\&    package Morpheus::Bootstrap::B3;
+\&    use Morpheus::Plugin::Simple;
+.Ve
+.PP
+.Vb 12
+\&    sub new {
+\&        return Morpheus::Plugin::Simple\->new({
+\&            "morpheus/plugins" => {
+\&                "Bootstrap::B3" => {
+\&                    priority => 500, # we need something over 400
+\&                },
+\&                "Bootstrap::B2" => {
+\&                    priority => 0, # disable B2
+\&                },
+\&            }
+\&        });
+\&    }
+.Ve
+.PP
+.Vb 1
+\&    1;
+.Ve
 .SH "AUTHOR"
 .IX Header "AUTHOR"
 Andrei Mishchenko <druxa@yandex\-team.ru>
 .SH "COPYRIGHT AND LICENSE"
 .IX Header "COPYRIGHT AND LICENSE"
-This software is copyright (c) 2010 by Yandex \s-1LLC\s0.
+This software is copyright (c) 2011 by Yandex \s-1LLC\s0.
 .PP
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

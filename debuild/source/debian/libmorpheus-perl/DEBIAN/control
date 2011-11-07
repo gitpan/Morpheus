@@ -1,9 +1,9 @@
 Package: libmorpheus-perl
-Version: 0.35
+Version: 0.42
 Architecture: all
 Maintainer: Andrei Mishchenko <druxa@yandex-team.ru>
-Installed-Size: 216
-Depends: libdata-dump-perl, libdbi-perl, libjson-perl, libparams-validate-perl, libtemplate-perl, libxml-simple-perl, perl (>= 5.6.0-16)
+Installed-Size: 252
+Depends: libdata-dump-perl, libdbi-perl, libgetopt-long-perl, libjson-perl, libparams-validate-perl, libtemplate-perl, libxml-simple-perl, perl (>= 5.6.0-16)
 Section: yandex
 Priority: optional
 Description: an extremely flexible configuration engine

@@ -1,6 +1,6 @@
 package Morpheus::Plugin::Simple;
 BEGIN {
-  $Morpheus::Plugin::Simple::VERSION = '0.35';
+  $Morpheus::Plugin::Simple::VERSION = '0.42';
 }
 use strict;
 use warnings;
@@ -44,7 +44,7 @@ Morpheus::Plugin::Simple - plugin for simple static configuration
 
 =head1 VERSION
 
-version 0.35
+version 0.42
 
 =head1 AUTHOR
 
@@ -52,7 +52,7 @@ Andrei Mishchenko <druxa@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Yandex LLC.
+This software is copyright (c) 2011 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

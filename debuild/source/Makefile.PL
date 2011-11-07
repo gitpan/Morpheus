@@ -12,6 +12,7 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'the ultimate configuration engine',
   'AUTHOR' => 'Andrei Mishchenko <druxa@yandex-team.ru>',
   'BUILD_REQUIRES' => {
+    'Config' => '0',
     'Test::Class' => '0',
     'Test::Exception' => '0',
     'Test::More' => '0'
@@ -41,7 +42,7 @@ my %WriteMakefileArgs = (
     'XML::Simple' => '0',
     'overload' => '0'
   },
-  'VERSION' => '0.35',
+  'VERSION' => '0.42',
   'test' => {
     'TESTS' => 't/*.t'
   }

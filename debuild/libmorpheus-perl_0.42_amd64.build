@@ -1,0 +1,188 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: set CPPFLAGS to default value: 
+dpkg-buildpackage: set CFLAGS to default value: -g -O2
+dpkg-buildpackage: set CXXFLAGS to default value: -g -O2
+dpkg-buildpackage: set FFLAGS to default value: -g -O2
+dpkg-buildpackage: set LDFLAGS to default value: -Wl,-Bsymbolic-functions
+dpkg-buildpackage: source package libmorpheus-perl
+dpkg-buildpackage: source version 0.42
+dpkg-buildpackage: source changed by Andrei Mishchenko <druxa@yandex-team.ru>
+dpkg-buildpackage: host architecture amd64
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+dh_clean debian/build-stamp debian/install-stamp
+[ ! -f Makefile ] || /usr/bin/make realclean
+ dpkg-source -b source
+dpkg-source: warning: missing information for output field Standards-Version
+dpkg-source: warning: source directory './source' is not <sourcepackage>-<upstreamversion> 'libmorpheus-perl-0.42'
+dpkg-source: building libmorpheus-perl in libmorpheus-perl_0.42.tar.gz
+dpkg-source: building libmorpheus-perl in libmorpheus-perl_0.42.dsc
+ debian/rules build
+dh_testdir
+/usr/bin/perl Makefile.PL INSTALLDIRS=vendor \
+		INSTALLVENDORARCH=/usr/share/perl5/ \
+		VENDORARCHEXP=/usr/share/perl5/
+Checking if your kit is complete...
+Looks good
+Writing Makefile for Morpheus
+/usr/bin/make
+make[1]: Entering directory `/home/druxa/git/morpheus/debuild/source'
+cp lib/Morpheus/Plugin/File.pm blib/lib/Morpheus/Plugin/File.pm
+cp lib/Morpheus/Plugin/Simple.pm blib/lib/Morpheus/Plugin/Simple.pm
+cp lib/Morpheus/Plugin/DB.pm blib/lib/Morpheus/Plugin/DB.pm
+cp lib/Morpheus/Bootstrap.pm blib/lib/Morpheus/Bootstrap.pm
+cp lib/Morpheus/Plugin/Env.pm blib/lib/Morpheus/Plugin/Env.pm
+cp lib/Morpheus.pm blib/lib/Morpheus.pm
+cp lib/Morpheus/Overrides.pm blib/lib/Morpheus/Overrides.pm
+cp lib/Morpheus/Defaults.pm blib/lib/Morpheus/Defaults.pm
+cp lib/Morpheus/Bootstrap/Vital.pm blib/lib/Morpheus/Bootstrap/Vital.pm
+cp lib/Morpheus/Utils.pm blib/lib/Morpheus/Utils.pm
+cp lib/Morpheus/Plugin/Content.pm blib/lib/Morpheus/Plugin/Content.pm
+cp lib/Morpheus/Bootstrap/Extra.pm blib/lib/Morpheus/Bootstrap/Extra.pm
+cp lib/Morpheus/Key.pm blib/lib/Morpheus/Key.pm
+cp bin/morph blib/script/morph
+/usr/bin/perl -MExtUtils::MY -e 'MY->fixin(shift)' -- blib/script/morph
+Manifying blib/man1/morph.1p
+Manifying blib/man3/Morpheus::Plugin::File.3pm
+Manifying blib/man3/Morpheus::Plugin::DB.3pm
+Manifying blib/man3/Morpheus::Plugin::Simple.3pm
+Manifying blib/man3/Morpheus::Bootstrap.3pm
+Manifying blib/man3/Morpheus::Plugin::Env.3pm
+Manifying blib/man3/Morpheus.3pm
+Manifying blib/man3/Morpheus::Overrides.3pm
+Manifying blib/man3/Morpheus::Defaults.3pm
+Manifying blib/man3/Morpheus::Plugin::Content.3pm
+Manifying blib/man3/Morpheus::Utils.3pm
+Manifying blib/man3/Morpheus::Bootstrap::Vital.3pm
+Manifying blib/man3/Morpheus::Key.3pm
+Manifying blib/man3/Morpheus::Bootstrap::Extra.3pm
+make[1]: Leaving directory `/home/druxa/git/morpheus/debuild/source'
+/usr/bin/make test
+make[1]: Entering directory `/home/druxa/git/morpheus/debuild/source'
+PERL_DL_NONLAZY=1 /usr/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/bootstrap.t ........... ok
+t/cross.t ............... ok
+Subroutine Yandex::DB::Connect::DEBUG redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::INFO redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::WARN redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::ERROR redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::FATAL redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::DIE redefined at /usr/share/perl5/Yandex/Logger.pm line 246.
+Subroutine Yandex::DB::Connect::CROAK redefined at /usr/share/perl5/Yandex/Logger.pm line 251.
+t/env.t ................. ok
+t/file.t ................ ok
+Subroutine Yandex::DB::Connect::DEBUG redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::INFO redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::WARN redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::ERROR redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::FATAL redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::DIE redefined at /usr/share/perl5/Yandex/Logger.pm line 246.
+Subroutine Yandex::DB::Connect::CROAK redefined at /usr/share/perl5/Yandex/Logger.pm line 251.
+t/import-glob.t ......... ok
+Subroutine Yandex::DB::Connect::DEBUG redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::INFO redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::WARN redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::ERROR redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::FATAL redefined at /usr/share/perl5/Yandex/Logger.pm line 240.
+Subroutine Yandex::DB::Connect::DIE redefined at /usr/share/perl5/Yandex/Logger.pm line 246.
+Subroutine Yandex::DB::Connect::CROAK redefined at /usr/share/perl5/Yandex/Logger.pm line 251.
+t/import.t .............. ok
+t/key.t ................. ok
+t/merge.t ............... ok
+t/normalize.t ........... ok
+t/release-pod-syntax.t .. skipped: these tests are for release candidate testing
+t/script.t .............. ok
+All tests successful.
+Files=11, Tests=82,  2 wallclock secs ( 0.04 usr  0.01 sys +  2.18 cusr  0.27 csys =  2.50 CPU)
+Result: PASS
+make[1]: Leaving directory `/home/druxa/git/morpheus/debuild/source'
+touch debian/build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_clean -k
+/usr/bin/make install DESTDIR=/home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl PREFIX=/usr
+make[1]: Entering directory `/home/druxa/git/morpheus/debuild/source'
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Bootstrap.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Overrides.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Key.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Utils.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Defaults.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Bootstrap/Vital.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Bootstrap/Extra.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Plugin/File.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Plugin/Env.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Plugin/Simple.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Plugin/Content.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/perl5/Morpheus/Plugin/DB.pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man1/morph.1p
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Overrides.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Plugin::File.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Bootstrap::Vital.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Plugin::Simple.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Plugin::Content.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Plugin::DB.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Key.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Bootstrap::Extra.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Plugin::Env.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Defaults.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Utils.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/share/man/man3/Morpheus::Bootstrap.3pm
+Installing /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/bin/morph
+Appending installation info to /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/lib/perl/5.8/perllocal.pod
+make[1]: Leaving directory `/home/druxa/git/morpheus/debuild/source'
+rm -rf /home/druxa/git/morpheus/debuild/source/debian/libmorpheus-perl/usr/lib/perl/5.8/
+touch debian/install-stamp
+dh_testdir
+dh_testroot
+dh_installdocs README
+dh_installexamples
+dh_installchangelogs Changes
+dh_installdirs
+dh_installcron
+dh_installlogrotate
+dh_perl
+if [ -x /usr/bin/dh_perldeps ]; then dh_perldeps; fi
+dh_compress
+dh_fixperms
+dh_installdeb
+dh_gencontrol
+dh_md5sums
+dh_builddeb
+dpkg-deb: building package `libmorpheus-perl' in `../libmorpheus-perl_0.42_all.deb'.
+ dpkg-genchanges  >../libmorpheus-perl_0.42_amd64.changes
+dpkg-genchanges: including full source code in upload
+dpkg-buildpackage: full upload; Debian-native package (full source is included)
+Now running lintian...
+Use of uninitialized value in join or string at /usr/share/perl5/Perl/Critic/Policy/Modules/RequireEndWithTrue.pm line 57.
+E: libmorpheus-perl source: perl-critic-violation [Modules::PackageInScripts] unpacked/bin/morph: Script's package must be bin::<script_name> at line 4, column 1.  All PPB scripts should define package as bin::<script_name>.  (Severity: 3)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/bin/morph: Code before strictures are enabled at line 5, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Bootstrap.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Defaults.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Key.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Overrides.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [Variables::ProhibitReusedNames] unpacked/lib/Morpheus/Overrides.pm: Reused variable name in lexical scope: $cache at line 20, column 5.  Invent unique variable names.  (Severity: 3)
+E: libmorpheus-perl source: perl-critic-violation [Variables::ProhibitReusedNames] unpacked/lib/Morpheus/Overrides.pm: Reused variable name in lexical scope: $cache at line 32, column 5.  Invent unique variable names.  (Severity: 3)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Utils.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Bootstrap/Extra.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Bootstrap/Vital.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Plugin/Content.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [RegularExpressions::ProhibitUnusedCapture] unpacked/lib/Morpheus/Plugin/Content.pm: Only use a capturing group if you plan to use the captured value at line 31, column 9.  See page 252 of PBP.  (Severity: 3)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Plugin/DB.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Plugin/Env.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Plugin/File.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+E: libmorpheus-perl source: perl-critic-violation [TestingAndDebugging::RequireUseStrict] unpacked/lib/Morpheus/Plugin/Simple.pm: Code before strictures are enabled at line 2, column 1.  See page 429 of PBP.  (Severity: 4)
+W: libmorpheus-perl: manpage-section-mismatch usr/share/man/man1/morph.1p.gz:132 1p != 1
+W: libmorpheus-perl: extended-description-line-too-long
+W: libmorpheus-perl: extended-description-line-too-long
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile libmorpheus-perl_0.42.dsc Andrei Mishchenko <druxa@yandex-team.ru>
+
+ signfile libmorpheus-perl_0.42_amd64.changes Andrei Mishchenko <druxa@yandex-team.ru>
+
+Successfully signed dsc and changes files

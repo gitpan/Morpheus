@@ -129,18 +129,67 @@
 .\" ========================================================================
 .\"
 .IX Title "Morpheus::Key 3"
-.TH Morpheus::Key 3 "2010-12-16" "perl v5.8.8" "User Contributed Perl Documentation"
+.TH Morpheus::Key 3 "2011-11-03" "perl v5.8.8" "User Contributed Perl Documentation"
 .SH "NAME"
 Morpheus::Key \- class representing config key
 .SH "VERSION"
 .IX Header "VERSION"
-version 0.35
+version 0.42
+.SH "SYNOPSIS"
+.IX Header "SYNOPSIS"
+.Vb 1
+\&    use Morpheus::Key qw(key);
+.Ve
+.PP
+.Vb 2
+\&    $key = Morpheus::Key\->new("/foo/bar/x");
+\&    $key = key("/foo/bar/y");
+.Ve
+.PP
+.Vb 2
+\&    say "key: $key";
+\&    say "parts: ", join \(aq/\(aq, @{ $key\->parts };
+.Ve
+.PP
+.Vb 1
+\&    key("/foo/bar") ge key("/foo"); # true
+.Ve
+.PP
+.Vb 2
+\&    key("/foo") gt key("/bar"); # false
+\&    key("/bar") gt key("/foo"); # also false
+.Ve
+.SH "DESCRIPTION"
+.IX Header "DESCRIPTION"
+Morpheus configuration tree looks very much like a file system with directory structure and files. The names of these \*(L"directories\*(R" and \*(L"files\*(R" are called \fIconfiguration keys\fR. They are either represented by a string of the form \f(CW\*(C`/namespace/subnamespace/...\*(C'\fR (like a file path) or by the \f(CW\*(C`Morpheus::Key\*(C'\fR object. In fact Morpheus always casts the string key representation into an object to simplify its further usage.
+.PP
+Morpheus::Key class provides the following features:
+.Sh "Normalization"
+.IX Subsection "Normalization"
+The string representation of a key has a disadvantage that unequal strings may refer to the same namespace. Morpheus::Key class does a normalization of the key string so that equal namespaces were represented by equal strings. That normalization includes:
+.IP "\(bu" 4
+Removal of a trailing slash if present (\*(L"/a/b/c/\*(R" \-> \*(L"/a/b/c\*(R").
+.IP "\(bu" 4
+Removal of repeated slashes (\*(L"/a//b///c\*(R" \-> \*(L"/a/b/c\*(R").
+.IP "\(bu" 4
+Appending of a leading \*(L"/\*(R" if it is missing (\*(L"a/b\*(R" \-> \*(L"/a/b\*(R"). We plan to remove this normalization step in the future as soon as we introduce a notion of \*(L"relative\*(R" keys.
+.PP
+We also consider the idea of making configuration keys case insensitive, but at the moment the key case is completely preserved.
+.Sh "Comparison operators"
+.IX Subsection "Comparison operators"
+It is often required to check if two namespaces are equal or one namespace is a part of another one. Morpheus::Key class overloads the following operators to help do so: eq, ne, lt, le, gt, ge. Note that the set of configuration keys is only partially ordered, that is both \f(CW$key1\fR ge \f(CW$key2\fR and \f(CW$key1\fR le \f(CW$key2\fR may be false. Consider \f(CW$key1\fR = \*(L"/a/b\*(R" and \f(CW$key2\fR = \*(L"/a/c\*(R" for instance.
+.Sh "Transparent access to string key representation"
+.IX Subsection "Transparent access to string key representation"
+Morpheus::Key objects return their string representation when stringified.
+.Sh "Splitting into namespace parts"
+.IX Subsection "Splitting into namespace parts"
+\&\f(CW\*(C`$key\->parts\*(C'\fR return an arrayref of key parts.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
 Andrei Mishchenko <druxa@yandex\-team.ru>
 .SH "COPYRIGHT AND LICENSE"
 .IX Header "COPYRIGHT AND LICENSE"
-This software is copyright (c) 2010 by Yandex \s-1LLC\s0.
+This software is copyright (c) 2011 by Yandex \s-1LLC\s0.
 .PP
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

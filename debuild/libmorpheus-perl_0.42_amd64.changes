@@ -1,0 +1,31 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.7
+Date: Thu, 03 Nov 2011 20:18:56 +0400
+Source: libmorpheus-perl
+Binary: libmorpheus-perl
+Architecture: source all
+Version: 0.42
+Distribution: stable
+Urgency: low
+Maintainer: Andrei Mishchenko <druxa@yandex-team.ru>
+Changed-By: Andrei Mishchenko <druxa@yandex-team.ru>
+Description: 
+ libmorpheus-perl - an extremely flexible configuration engine
+Changes: 
+ libmorpheus-perl (0.42) stable; urgency=low
+ .
+   * skip #line pragma for non files
+Files: 
+ dd251b08b3666b6541fff3056626eafc 670 yandex optional libmorpheus-perl_0.42.dsc
+ 5394d52afe41f4c297dbee6cc1f765f4 31472 yandex optional libmorpheus-perl_0.42.tar.gz
+ 46c9e931cf100a5a1877b10e01714fe4 54252 yandex optional libmorpheus-perl_0.42_all.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFOsr8t734+XFWIp0gRAs70AJ9N0XsE0nFo+ipCg4BgW1h7gBJjtQCfXV1s
+U73ls0Ibd/lIW2RZ+VcuDP0=
+=Zv6Z
+-----END PGP SIGNATURE-----

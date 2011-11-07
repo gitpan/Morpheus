@@ -3,7 +3,7 @@
 
 package morph;
 BEGIN {
-  $morph::VERSION = '0.35';
+  $morph::VERSION = '0.42';
 }
 
 # ABSTRACT: Morpheus configuration tree dumper.
@@ -45,7 +45,7 @@ for my $key (@keys) {
         print Data::Dumper->new([])->Terse(1)->Values([$morph])->Dump();
     } elsif ($format eq "json") {
         require JSON;
-        print JSON::to_json($morph, { ascii => 1, pretty => 1 });
+        print JSON::to_json($morph, { ascii => 1, pretty => 1, allow_nonref => 1 });
     } elsif ($format eq "xml") {
         require XML::Simple;
         print XML::Simple::XMLout($morph, NoAttr => 1);
@@ -70,7 +70,7 @@ morph - Morpheus configuration tree dumper.
 
 =head1 VERSION
 
-version 0.35
+version 0.42
 
 =head1 SYNOPSIS
 
@@ -86,7 +86,7 @@ Andrei Mishchenko <druxa@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Yandex LLC.
+This software is copyright (c) 2011 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

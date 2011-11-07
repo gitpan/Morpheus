@@ -1,6 +1,6 @@
 package Morpheus::Plugin::Content;
 BEGIN {
-  $Morpheus::Plugin::Content::VERSION = '0.41';
+  $Morpheus::Plugin::Content::VERSION = '0.42';
 }
 
 # ABSTRACT: base class for plugins that evaluate user defined perl configs
@@ -54,12 +54,15 @@ sub _process ($$) {
     # $X = 5;
     # $Y = morph("X") + 1; # 6 
     #############################
+    
+    my $pragma = "";
+    $pragma = qq{# line 1 "$token"} if $token =~ m{^[/\w\.\-]+$}; # looks like a file name
 
     my @eval = eval qq{
 no strict;
 no warnings;
 package $package;
-# line 1 "$token"
+$pragma
 $content
 };
     die if $@;
@@ -128,7 +131,7 @@ Morpheus::Plugin::Content - base class for plugins that evaluate user defined pe
 
 =head1 VERSION
 
-version 0.41
+version 0.42
 
 =head1 CONFIGURATION BLOCKS
 

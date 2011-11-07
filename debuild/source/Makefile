@@ -1,7 +1,7 @@
 # This Makefile is for the Morpheus extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.56 (Revision: 65600) from the contents of
+# 6.62 (Revision: 66200) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -12,15 +12,15 @@
 #   MakeMaker Parameters:
 
 #     ABSTRACT => q[the ultimate configuration engine]
-#     AUTHOR => q[Andrei Mishchenko <druxa@yandex-team.ru>]
-#     BUILD_REQUIRES => { Test::More=>q[0], Test::Exception=>q[0], Test::Class=>q[0] }
+#     AUTHOR => [q[Andrei Mishchenko <druxa@yandex-team.ru>]]
+#     BUILD_REQUIRES => { Test::More=>q[0], Test::Exception=>q[0], Test::Class=>q[0], Config=>q[0] }
 #     CONFIGURE_REQUIRES => { ExtUtils::MakeMaker=>q[6.31] }
 #     DISTNAME => q[Morpheus]
 #     EXE_FILES => [q[bin/morph]]
 #     LICENSE => q[perl]
 #     NAME => q[Morpheus]
-#     PREREQ_PM => { Pod::Usage=>q[0], XML::Simple=>q[0], Symbol=>q[0], File::Find=>q[0], Digest::MD5=>q[0], Data::Dump=>q[0], DBI=>q[0], Getopt::Long=>q[0], Test::Exception=>q[0], Test::Class=>q[0], Data::Dumper=>q[0], overload=>q[0], Template=>q[0], Exporter=>q[0], Test::More=>q[0], Params::Validate=>q[0], JSON=>q[0] }
-#     VERSION => q[0.35]
+#     PREREQ_PM => { Pod::Usage=>q[0], XML::Simple=>q[0], Config=>q[0], Symbol=>q[0], File::Find=>q[0], Digest::MD5=>q[0], Data::Dump=>q[0], DBI=>q[0], Getopt::Long=>q[0], Test::Exception=>q[0], Test::Class=>q[0], Data::Dumper=>q[0], overload=>q[0], Template=>q[0], Exporter=>q[0], Test::More=>q[0], Params::Validate=>q[0], JSON=>q[0] }
+#     VERSION => q[0.42]
 #     test => { TESTS=>q[t/*.t] }
 
 # --- MakeMaker post_initialize section:
@@ -41,11 +41,11 @@ FULL_AR = /usr/bin/ar
 LD = cc
 LDDLFLAGS = -shared -L/usr/local/lib
 LDFLAGS =  -L/usr/local/lib
-LIBC = /lib/libc-2.6.1.so
+LIBC = /lib/libc-2.7.so
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 2.6.15.7
+OSVERS = 2.6.24-28-server
 RANLIB = :
 SITELIBEXP = /usr/local/share/perl/5.8.8
 SITEARCHEXP = /usr/local/lib/perl/5.8.8
@@ -60,11 +60,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Morpheus
 NAME_SYM = Morpheus
-VERSION = 0.35
+VERSION = 0.42
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_35
+VERSION_SYM = 0_42
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.35
+XS_VERSION = 0.42
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -140,8 +140,8 @@ PERM_RW = 644
 PERM_RWX = 755
 
 MAKEMAKER   = /usr/share/perl5/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.56
-MM_REVISION = 65600
+MM_VERSION  = 6.62
+MM_REVISION = 66200
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -241,7 +241,7 @@ PM_TO_BLIB = lib/Morpheus/Plugin/File.pm \
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.56
+MM_Unix_VERSION = 6.62
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -306,7 +306,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Morpheus
-DISTVNAME = Morpheus-0.35
+DISTVNAME = Morpheus-0.42
 
 
 # --- MakeMaker macro section:
@@ -534,14 +534,15 @@ clean :: clean_subdirs
 	  *$(LIB_EXT) core \
 	  core.[0-9] $(INST_ARCHAUTODIR)/extralibs.all \
 	  core.[0-9][0-9] $(BASEEXT).bso \
-	  pm_to_blib.ts core.[0-9][0-9][0-9][0-9] \
+	  pm_to_blib.ts MYMETA.json \
+	  core.[0-9][0-9][0-9][0-9] MYMETA.yml \
 	  $(BASEEXT).x $(BOOTSTRAP) \
 	  perl$(EXE_EXT) tmon.out \
 	  *$(OBJ_EXT) pm_to_blib \
 	  $(INST_ARCHAUTODIR)/extralibs.ld blibdirs.ts \
 	  core.[0-9][0-9][0-9][0-9][0-9] *perl.core \
 	  core.*perl.*.? $(MAKE_APERL_FILE) \
-	  perl $(BASEEXT).def \
+	  $(BASEEXT).def perl \
 	  core.[0-9][0-9][0-9] mon.out \
 	  lib$(BASEEXT).def perlmain.c \
 	  perl.exe so_locations \
@@ -566,46 +567,8 @@ realclean purge ::  clean realclean_subdirs
 
 
 # --- MakeMaker metafile section:
-metafile : create_distdir
-	$(NOECHO) $(ECHO) Generating META.yml
-	$(NOECHO) $(ECHO) '--- #YAML:1.0' > META_new.yml
-	$(NOECHO) $(ECHO) 'name:               Morpheus' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version:            0.35' >> META_new.yml
-	$(NOECHO) $(ECHO) 'abstract:           the ultimate configuration engine' >> META_new.yml
-	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    - Andrei Mishchenko <druxa@yandex-team.ru>' >> META_new.yml
-	$(NOECHO) $(ECHO) 'license:            perl' >> META_new.yml
-	$(NOECHO) $(ECHO) 'distribution_type:  module' >> META_new.yml
-	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  6.31' >> META_new.yml
-	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Test::Class:      0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Test::Exception:  0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Test::More:       0' >> META_new.yml
-	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Data::Dump:        0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Data::Dumper:      0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    DBI:               0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Digest::MD5:       0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Exporter:          0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    File::Find:        0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Getopt::Long:      0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    JSON:              0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    overload:          0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Params::Validate:  0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Pod::Usage:        0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Symbol:            0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Template:          0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    XML::Simple:       0' >> META_new.yml
-	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    directory:' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - t' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - inc' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by:       ExtUtils::MakeMaker version 6.56' >> META_new.yml
-	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    url:      http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
-	$(NOECHO) $(ECHO) '    version:  1.4' >> META_new.yml
-	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
+metafile :
+	$(NOECHO) $(NOOP)
 
 
 # --- MakeMaker signature section:
@@ -697,8 +660,12 @@ ci :
 
 # --- MakeMaker distmeta section:
 distmeta : create_distdir metafile
-	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{META.yml} => q{Module meta-data (added by MakeMaker)}}) } ' \
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -e q{META.yml};' \
+	  -e 'eval { maniadd({q{META.yml} => q{Module YAML meta-data (added by MakeMaker)}}) }' \
 	  -e '    or print "Could not add META.yml to MANIFEST: $${'\''@'\''}\n"' --
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -f q{META.json};' \
+	  -e 'eval { maniadd({q{META.json} => q{Module JSON meta-data (added by MakeMaker)}}) }' \
+	  -e '    or print "Could not add META.json to MANIFEST: $${'\''@'\''}\n"' --
 
 
 
@@ -898,7 +865,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.35">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.42">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>the ultimate configuration engine</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Andrei Mishchenko &lt;druxa@yandex-team.ru&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
