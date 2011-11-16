@@ -1,6 +1,6 @@
 package Morpheus;
 BEGIN {
-  $Morpheus::VERSION = '0.42';
+  $Morpheus::VERSION = '0.43';
 }
 use strict;
 sub morph ($;$);
@@ -286,7 +286,7 @@ Morpheus - the ultimate configuration engine
 
 =head1 VERSION
 
-version 0.42
+version 0.43
 
 =head1 SYNOPSIS
 

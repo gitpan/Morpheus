@@ -1,6 +1,6 @@
 package Morpheus::Plugin::Env;
 BEGIN {
-  $Morpheus::Plugin::Env::VERSION = '0.42';
+  $Morpheus::Plugin::Env::VERSION = '0.43';
 }
 use strict;
 
@@ -31,7 +31,7 @@ Morpheus::Plugin::Env - plugin which provides config values based on MORPHEUS en
 
 =head1 VERSION
 
-version 0.42
+version 0.43
 
 =head1 AUTHOR
 
