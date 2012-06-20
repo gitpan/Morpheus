@@ -1,1 +1,0 @@
-perl:Depends=libjson-perl, libtemplate-perl, perl, libgetopt-long-perl, libdbi-perl, libparams-validate-perl, libxml-simple-perl, libdata-dump-perl, perl (>= 5.6.0-16)

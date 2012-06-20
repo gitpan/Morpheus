@@ -1,6 +1,6 @@
 package Morpheus::Plugin::Content;
 BEGIN {
-  $Morpheus::Plugin::Content::VERSION = '0.43';
+  $Morpheus::Plugin::Content::VERSION = '0.44';
 }
 
 # ABSTRACT: base class for plugins that evaluate user defined perl configs
@@ -131,7 +131,7 @@ Morpheus::Plugin::Content - base class for plugins that evaluate user defined pe
 
 =head1 VERSION
 
-version 0.43
+version 0.44
 
 =head1 CONFIGURATION BLOCKS
 
@@ -341,7 +341,7 @@ Andrei Mishchenko <druxa@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Yandex LLC.
+This software is copyright (c) 2012 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
