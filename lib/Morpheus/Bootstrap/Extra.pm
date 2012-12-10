@@ -1,6 +1,6 @@
 package Morpheus::Bootstrap::Extra;
 {
-  $Morpheus::Bootstrap::Extra::VERSION = '0.45';
+  $Morpheus::Bootstrap::Extra::VERSION = '0.46';
 }
 use strict;
 use warnings;
@@ -47,7 +47,7 @@ Morpheus::Bootstrap::Extra - extra plugins - Env and File
 
 =head1 VERSION
 
-version 0.45
+version 0.46
 
 =head1 AUTHOR
 

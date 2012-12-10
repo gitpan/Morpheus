@@ -21,6 +21,9 @@ lib/Morpheus/Plugin/Env.pm
 lib/Morpheus/Plugin/File.pm
 lib/Morpheus/Plugin/Simple.pm
 lib/Morpheus/Utils.pm
+libmorpheus-perl_0.45.dsc
+libmorpheus-perl_0.45.tar.gz
+libmorpheus-perl_0.45_amd64.build
 t/bootstrap.t
 t/cross.t
 t/env.t
