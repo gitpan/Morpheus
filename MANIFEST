@@ -5,6 +5,7 @@ META.yml
 Makefile.PL
 README
 README.md
+X.cfg
 bin/morph
 dist.ini
 lib/Morpheus.pm
@@ -25,6 +26,8 @@ t/cross.t
 t/env.t
 t/etc/cross/test/x1.cfg
 t/etc/cross/test/x3.cfg
+t/etc/cycle/X.cfg
+t/etc/cycle/Y.cfg
 t/etc/test/file/collision.cfg
 t/etc/test/file/name-longer.cfg
 t/etc/test/file/name.cfg
